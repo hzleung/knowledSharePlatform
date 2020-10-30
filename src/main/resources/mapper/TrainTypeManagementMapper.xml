@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ly.cloud.user.mapper.TrainTypeManagementMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.ly.cloud.user.entity.TrainTypeManagement">
+        <id column="PXBH" property="trainId" />
+        <result column="PXLX" property="trainType" />
+        <result column="PXLXFL" property="trainRouteType" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        PXBH, PXLX, PXLXFL
+    </sql>
+    
+    <select id="selectPage" resultMap="BaseResultMap">
+    	select 
+    	<include refid="Base_Column_List"></include>
+    	from LY_LDD_PXLXGLB
+    </select>
+
+<!--    <select id="selectAllTrain">-->
+<!--        SELECT t.*,t2.pxnrbh,-->
+<!--        t2.pxdd,-->
+<!--        t2.pxjj,-->
+<!--        t2.pxkssj,-->
+<!--        t2.pxfbsj,-->
+<!--        t2.pxfbyh,-->
+<!--        t2.pxfbtx,-->
+<!--        t2.pxnr,-->
+<!--        t2.pxcpjc,-->
+<!--        t2.fm,-->
+<!--        t2.pxsp,-->
+<!--        t2.pxfj from LY_LDD_PXLXGLB t left join LY_LDD_PXNRGLB t2 on t.PXBH =t2.PXBH-->
+<!--    </select>-->
+
+</mapper>

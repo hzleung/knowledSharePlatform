@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ly.cloud.user.mapper.ArticleManagementMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.ly.cloud.user.entity.ArticleManagement">
+        <id column="ID" property="articleId" />
+        <result column="FBSJ" property="articlePublicTime" />
+        <result column="FBYH" property="userId" />
+        <result column="WZBT" property="title" />
+        <result column="WZSSBQ" property="label" />
+        <result column="WZSSFL" property="type" />
+        <result column="DZL" property="articleLike" />
+        <result column="PLS" property="articleReview" />
+        <result column="LLL" property="articleVisit" />
+        <result column="YHTX" property="articleUserAvatar" />
+        <result column="WZNR" property="content" />
+        <result column="FJ" property="files" />
+        <result column="FM" property="banner" />
+        <result column="FBYHM" property="author" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID, FBSJ, FBYH, WZBT, WZSSBQ, WZSSFL, DZL, PLS, LLL, YHTX, WZNR, FJ, FM
+    </sql>
+    
+    <select id="selectPage" resultMap="BaseResultMap">
+    	select 
+    	<include refid="Base_Column_List"></include>
+    	from LY_LDD_WZGLB
+    </select>
+
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+        *
+        from LY_LDD_WZGLB
+        ORDER BY FBSJ ASC
+    </select>
+
+    <select id="queryTopTen" resultMap="BaseResultMap">
+        select
+        *
+        from LY_LDD_WZGLB
+        where rownum <![CDATA[ <= ]]> 8 ORDER BY LLL DESC
+    </select>
+
+    <update id="updateArticleVisit">
+        update LY_LDD_WZGLB
+        set lll = #{lll}
+        <where>
+            ID = #{id}
+        </where>
+    </update>
+
+</mapper>

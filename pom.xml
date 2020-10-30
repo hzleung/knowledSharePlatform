@@ -1,0 +1,92 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ly.cloud</groupId>
+		<artifactId>ly-cloud</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>ly-cloud-demo-sv</artifactId>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.ly.cloud</groupId>
+			<artifactId>ly-cloud-mybatis-plus</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.baomidou</groupId>
+					<artifactId>mybatis-plus-generate</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.ly.cloud</groupId>
+			<artifactId>mybatis-plus-generate</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<!-- 公共用包 -->
+		<dependency>
+			<groupId>com.ly.cloud</groupId>
+			<artifactId>ly-cloud-common</artifactId>
+			<version>0.0.2-SNAPSHOT</version>
+		</dependency>
+		<!-- 日志记录包 -->
+		<dependency>
+			<groupId>com.ly.cloud</groupId>
+			<artifactId>ly-cloud-starter-logs</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<!--<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+		</dependency>-->
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>public</id>
+			<name>public</name>
+			<url>http://192.168.30.58:8081/repository/public/</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>public</id>
+			<name>public</name>
+			<url>http://192.168.30.58:8081/repository/public/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<build>
+		<plugins>
+			<!-- 配置spring boot maven插件，把项目打包成可运行的jar包 -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<!-- 命令：mybatis-generator:generate -->
+			<plugin>
+				<groupId>org.mybatis.generator</groupId>
+				<artifactId>mybatis-generator-maven-plugin</artifactId>
+			</plugin>
+
+			<!-- 依赖Dockerfile构建命令：mvn clean package docker:build -->
+			<!-- mvn clean package -DskipTests=true docker:build -->
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>8</source>
+					<target>8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

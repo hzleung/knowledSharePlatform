@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ly.cloud.projectMap.mapper.ProjectMapManagementMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.ly.cloud.user.entity.ProjectMapManagement">
+        <id column="ID" property="projectId" />
+        <result column="FBSJ" property="projectPublicTime" />
+        <result column="FBYH" property="projectPublicUser" />
+        <result column="XMMC" property="projectName" />
+        <result column="XMLJ" property="projectUrl" />
+        <result column="XMSSDQ" property="projectArea" />
+        <result column="XMLX" property="projectType" />
+        <result column="XMBBH" property="projectVersion" />
+        <result column="XMFJ" property="projectFiles" />
+        <result column="XMFM" property="projectBanner" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID, FBSJ, FBYH, XMMC, XMLJ, XMSSDQ, XMLX, XMBBH, XMFJ, XMFM
+    </sql>
+    
+    <select id="selectPage" resultMap="BaseResultMap">
+    	select 
+    	<include refid="Base_Column_List"></include>
+    	from LY_LDD_XMDTGLB
+    </select>
+
+</mapper>
