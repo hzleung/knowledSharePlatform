@@ -20,19 +20,19 @@
     	from LY_LDD_PXLXGLB
     </select>
 
-<!--    <select id="selectAllTrain">-->
-<!--        SELECT t.*,t2.pxnrbh,-->
-<!--        t2.pxdd,-->
-<!--        t2.pxjj,-->
-<!--        t2.pxkssj,-->
-<!--        t2.pxfbsj,-->
-<!--        t2.pxfbyh,-->
-<!--        t2.pxfbtx,-->
-<!--        t2.pxnr,-->
-<!--        t2.pxcpjc,-->
-<!--        t2.fm,-->
-<!--        t2.pxsp,-->
-<!--        t2.pxfj from LY_LDD_PXLXGLB t left join LY_LDD_PXNRGLB t2 on t.PXBH =t2.PXBH-->
-<!--    </select>-->
+    <select id="selectAllTrain" resultType="Map">
+        SELECT t.*,t2.pxnrbh,
+        t2.pxdd,
+        t2.pxjj,
+        t2.pxkssj,
+        t2.pxfbsj,
+        t2.pxfbyh,
+        t2.pxfbtx,
+        t2.pxnr,
+        t2.pxcpjc,
+        t2.fm,
+        t2.pxsp,
+        t2.pxfj from LY_LDD_PXLXGLB t left join LY_LDD_PXNRGLB t2 on t.PXBH =t2.PXBH
+    </select>
 
 </mapper>

@@ -1,6 +1,7 @@
 package com.ly.cloud.user.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.ly.cloud.user.entity.FileManagement;
 import org.apache.ibatis.annotations.Param;
@@ -22,4 +23,6 @@ public interface TrainTypeManagementMapper extends BaseMapper<TrainTypeManagemen
 	List<TrainTypeManagement> selectPage(@Param("page")Page<TrainTypeManagement> page, @Param("dto")TrainTypeManagement dto);
 
 	Boolean trainInsert(@Param("dto") TrainTypeManagement dto);
+
+	List<Map<String,Object>> selectAllTrain();
 }

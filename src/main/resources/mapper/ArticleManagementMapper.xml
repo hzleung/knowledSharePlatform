@@ -31,11 +31,25 @@
     	from LY_LDD_WZGLB
     </select>
 
+<!--    <select id="queryAll" resultMap="BaseResultMap">-->
+<!--        select-->
+<!--        *-->
+<!--        from LY_LDD_WZGLB-->
+<!--        ORDER BY FBSJ ASC-->
+<!--    </select>-->
+
+
     <select id="queryAll" resultMap="BaseResultMap">
+        with temp as(
+        select t.id,count(d.id) num from  ly_ldd_wzglb t
+        left  join ly_ldd_dzb d on t.id = d.dzwzid
+        group by t.id
+        )
         select
-        *
-        from LY_LDD_WZGLB
-        ORDER BY FBSJ ASC
+        t.*,t1.num
+        from LY_LDD_WZGLB t
+        left join temp t1 on t.id =t1.id
+        ORDER BY FBSJ ASC;
     </select>
 
     <select id="queryTopTen" resultMap="BaseResultMap">

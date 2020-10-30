@@ -2,6 +2,7 @@ package com.ly.cloud.user.controller;
 
 import javax.annotation.Resource;
 
+import com.ly.cloud.user.entity.ArticleManagement;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.logging.Log;
@@ -21,6 +22,9 @@ import com.ly.cloud.user.entity.TrainTypeManagement;
 import com.ly.cloud.user.service.TrainTypeManagementService;
 import com.ly.cloud.user.dto.TrainDTO;
 import com.ly.cloud.web.utils.WebResponse;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -89,6 +93,18 @@ public class TrainTypeManagementController {
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 			return new WebResponse<Boolean>().failure(e.getMessage());
+		}
+	}
+
+	@ApiOperation(value = "获取所有培训", notes = "")
+	@RequestMapping(value = "/selectAll", method = RequestMethod.GET)
+	public WebResponse< List<Map<String,Object>>> selectAll() {
+		try {
+			List<Map<String,Object>> list = trainTypeManagementService.selectAll();
+			return new WebResponse<List<Map<String,Object>>>().success(list);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			return new WebResponse< List<Map<String,Object>>>().failure(e.getMessage());
 		}
 	}
 

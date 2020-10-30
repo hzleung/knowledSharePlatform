@@ -1,9 +1,13 @@
 package com.ly.cloud.user.service;
 
 import com.ly.cloud.user.dto.TrainDTO;
+import com.ly.cloud.user.entity.ArticleManagement;
 import com.ly.cloud.user.entity.TrainTypeManagement;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -18,4 +22,6 @@ public interface TrainTypeManagementService extends IService<TrainTypeManagement
 	Page<TrainTypeManagement> selectPage(Page<TrainTypeManagement> page, TrainTypeManagement dto);
 
 	boolean insertTypeAndContent(TrainDTO entity);
+
+	List<Map<String,Object>> selectAll();
 }

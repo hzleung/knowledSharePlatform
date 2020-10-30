@@ -2,9 +2,12 @@ package com.ly.cloud.user.service.impl;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import com.ly.cloud.user.dto.TrainDTO;
+import com.ly.cloud.user.entity.ArticleManagement;
 import com.ly.cloud.user.entity.TrainContentManagement;
 import com.ly.cloud.user.mapper.TrainContentManagementMapper;
 import io.swagger.annotations.Api;
@@ -98,5 +101,11 @@ public class TrainTypeManagementServiceImpl extends ServiceImpl<TrainTypeManagem
 		contentManagementPo.setTrainVideo(dto.getTrainVideo());
 		trainContentManagementMapper.insert(contentManagementPo);
 		return false;
+	}
+
+
+	@Override
+	public List<Map<String,Object>> selectAll() {
+		return trainTypeManagementMapper.selectAllTrain();
 	}
 }
